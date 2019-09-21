@@ -1,0 +1,40 @@
+﻿Requirement,,,YEET
+Runway,Create,,
+,Read,,
+,Update,,
+,Delete,,
+,Size Reqs,,X
+,Uniq Reqs,,X
+,Properties,,X
+Plane,Create,,What happens in case of error?
+,Read,,
+,Update,,
+,Delete,,
+,Size Reqs,,X
+,Uniq Reqs,,X
+,Properties,,X
+Gate,Create,,
+,Read,,
+,Update,,
+,Delete,,
+,Size Reqs,,X
+,Auth Reqs,,X
+,Uniq Reqs,,X
+,Properties,,X
+Airport,Create,,
+,Read,,
+,Update,,
+,Delete,,
+,Uniq Reqs,,X
+,Properties,,X
+Airline,Create,,
+,Read,,
+,Update,,
+,Delete,,
+,Uniq Reqs,,X
+,Properties,,X
+General,IDs,,Present
+,Use Cases,,Excellent
+,Non Funcs,,No non-functional requirements provided
+,,,A few requirements had parts that were just left as the template :)
+,,,"Overall requirements good, but error cases not specified"
