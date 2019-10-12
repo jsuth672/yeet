@@ -1,7 +1,7 @@
 from django.test import TestCase
-from models import Airport
+from models import Plane
 
-class TestAirportGetRunways(TestCase):
+class TestPlaneGetAirline(TestCase):
     def test_set_up(self):
         # create test objects here
         pass
@@ -14,7 +14,7 @@ class TestAirportGetRunways(TestCase):
         # delete test objects here
         pass
 
-class TestAirportGetGates(TestCase):
+class TestPlaneGetGate(TestCase):
     def test_set_up(self):
         # create test objects here
         pass
@@ -27,7 +27,7 @@ class TestAirportGetGates(TestCase):
         # delete test objects here
         pass
 
-class TestAirportGetAirlines(TestCase):
+class TestPlaneGetRunway(TestCase):
     def test_set_up(self):
         # create test objects here
         pass

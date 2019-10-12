@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class role(models.Model):
+class Role(models.Model):
     name = models.CharField(max_length=100)
     isATC = models.BooleanField(default=False)
     isGate = models.BooleanField(default=False)
@@ -10,7 +10,7 @@ class role(models.Model):
 class User(models.Model):
     name = models.CharField(max_length=100)
     password = models.CharField(max_length=100)  # TODO: add salt and hash
-    role = models.ForeignKey(role)
+    role = models.ForeignKey(Role)
 
     def hasATCPerm(self):
         return self.role.isATC
