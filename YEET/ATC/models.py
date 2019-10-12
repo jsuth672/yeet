@@ -41,7 +41,7 @@ class Airline(models.Model):
     airport = models.ManyToManyField("Airport")
 
     def getPlanes(self):
-        return Plane.objects.get(airline=self.id)
+        return Plane.objects.filter(airline=self.id)
 
 
 class Plane(models.Model):
