@@ -1,5 +1,5 @@
 from django.test import TestCase
-from models import Gate
+from ATC.models import Gate
 
 class TestGateGetPlane(TestCase):
     def test_set_up(self):

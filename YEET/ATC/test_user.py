@@ -1,5 +1,5 @@
 from django.test import TestCase
-from models import User
+from ATC.models import User
 
 class TestUserHasATCPerm(TestCase):
     def test_set_up(self):

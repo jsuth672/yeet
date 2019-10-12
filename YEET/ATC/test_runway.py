@@ -1,5 +1,5 @@
 from django.test import TestCase
-from models import Runway
+from ATC.models import Runway
 
 class TestRunwayGetPlane(TestCase):
     def test_set_up(self):
