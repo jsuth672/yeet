@@ -9,19 +9,27 @@ class role(models.Model):
 
 class User(models.Model):
     name = models.CharField(max_length=100)
-    password = models.CharField(max_length=100) #TODO: add salt and hash
+    password = models.CharField(max_length=100)  # TODO: add salt and hash
     role = models.ForeignKey(role)
 
     def hasATCPerm(self):
-        pass
+        return self.role.isATC
+
     def hasGatePerm(self):
-        pass
+        return self.role.isGate
 
 
 class Airport(models.Model):
     name = models.CharField(max_length=100)
     x = models.IntegerField(default=0)
     y = models.IntegerField(default=0)
+
+class Airline(models.Model):
+    name = models.CharField(max_length=100)
+    Airport = models.ManyToManyField("Airport")
+
+    def getPlanes(self):
+        return Plane.objects.get(airline=self.id)
 
 class Plane(models.Model):
     identifier = models.CharField(max_length=100)
@@ -32,12 +40,12 @@ class Plane(models.Model):
     gate = models.OneToOneField("Gate")
     runway = models.OneToOneField("Runway")
 
-    def getAriline(self):
-        pass
+    def getAirline(self):
+        return self.airline
     def getGate(self):
-        pass
+        return self.gate
     def getRunway(self):
-        pass
+        return self.runway
 
 class Runway(models.Model):
     identifier = models.CharField(max_length=100)
@@ -45,21 +53,19 @@ class Runway(models.Model):
     airport = models.ForeignKey(Airport)
 
     def getPlane(self):
-        pass
-    def getAirport(self):
-        pass
+        return self.plane
 
-class Airline(models.Model):
-    name = models.CharField(max_length=100)
-    Airport = models.ManyToManyField("Airport")
-    def getPlanes(self):
-        pass
+    def getAirport(self):
+        return self.airport
+
 
 class Gate(models.Model):
     identifier = models.CharField(max_length=100)
     size = models.CharField(max_length=10)
     airport = models.ForeignKey(Airport, on_delete=models.CASCADE())
+
     def getPlane(self):
-        pass
+        return self.plane
+
     def getAirport(self):
-        pass
+        return self.airport
