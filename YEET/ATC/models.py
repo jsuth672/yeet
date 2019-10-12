@@ -24,6 +24,15 @@ class Airport(models.Model):
     x = models.IntegerField(default=0)
     y = models.IntegerField(default=0)
 
+    def getRunways(self):
+        return Runway.objects.get(airport=self)
+
+    def getGate(self):
+        return Gate.objects.get(airport=self)
+
+    def getAirlines(self):
+        return Airline.objects.get(airport=self)
+
 class Airline(models.Model):
     name = models.CharField(max_length=100)
     Airport = models.ManyToManyField("Airport")
