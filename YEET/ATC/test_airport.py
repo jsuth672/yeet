@@ -1,12 +1,12 @@
 from django.test import TestCase
-from ATC.models import *
+from ATC.models import Airport, Airline, Gate, Runway
 from unittest.mock import patch, MagicMock, Mock
 
 
-class TestAirportGetRunways(TestCase):
+class TestAirport(TestCase):
 
-    def test_assert(self):
-        # assert statements here
+    # Written by Noah Mansfield
+    def test_GetRunways(self):
         airport = Airport(name="sc", x=4, y=20)
 
         r1 = Runway(identifier="west",size="s", airport=airport)
@@ -22,10 +22,8 @@ class TestAirportGetRunways(TestCase):
             all_runways[1].airport = airport
             self.assertEqual(len(airport.getRunways()), 3)
 
-
-class TestAirportGetGates(TestCase):
-
-    def test_assert(self):
+    # Written by Noah Mansfield
+    def test_GetGates(self):
         airport = Airport(name="sc", x=4, y=20)
 
         g1 = Gate(identifier="west", size="s", airport=airport)
@@ -42,10 +40,8 @@ class TestAirportGetGates(TestCase):
             all_gates[1].airport = airport
             self.assertEqual(len(airport.getGate()), 3)
 
-
-class TestAirportGetAirlines(TestCase):
-
-    def test_assert(self):
+    # Written by Noah Mansfield
+    def test_GetAirlines(self):
         airport = Airport(name="sc", x=4, y=20)
 
         def my_filter(*args, **kwargs):
