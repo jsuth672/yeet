@@ -1,41 +1,21 @@
 from django.test import TestCase
-from ATC.models import Plane
+from ATC.models import Plane, Airline, Gate, Runway, Airport
+
+# written by Justin
 
 class TestPlaneGetAirline(TestCase):
-    def test_set_up(self):
-        # create test objects here
-        pass
-
     def test_assert(self):
-        # assert statements here
-        pass
-
-    def test_tear_down(self):
-        # delete test objects here
-        pass
+        plane = Plane(identifier="Airplane 1", size ="l", currentPassengerCount = 174, maxPassengerCount = 200, airline = Airline(name = "Airline 1"))
+        self.assertEqual(plane.getAirline().name, "Airline 1")
 
 class TestPlaneGetGate(TestCase):
-    def test_set_up(self):
-        # create test objects here
-        pass
 
     def test_assert(self):
-        # assert statements here
-        pass
+        plane = Plane(identifier="Airplane 1", size ="l", currentPassengerCount = 174, maxPassengerCount = 200, gate = Gate( identifier = "A1", size = "l", airport = Airport(name = "GSA", x = 45, y = 3) ))
+        self.assertEqual(plane.getGate().identifier, "A1")
 
-    def test_tear_down(self):
-        # delete test objects here
-        pass
 
 class TestPlaneGetRunway(TestCase):
-    def test_set_up(self):
-        # create test objects here
-        pass
-
     def test_assert(self):
-        # assert statements here
-        pass
-
-    def test_tear_down(self):
-        # delete test objects here
-        pass
+        plane  = Plane(identifier="Airplane 1", size ="l", currentPassengerCount = 174, maxPassengerCount = 200, runway = Runway(identifier = "C1", size = "m", airport = Airport(name = "GSA", x = 45, y = 3)))
+        self.assertEqual(plane.getRunway().identifier, "C1")

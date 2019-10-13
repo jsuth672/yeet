@@ -23,11 +23,15 @@ class TestAirport(TestCase):
 
         air = Airport.objects.get(name='sc')
 
-        response = c.post('/ATC/airport/delete', {'id': air.id})
+        response = c.post('/ATC/airport/delete', {'id': str(air.id)})
         self.assertEqual(response.status_code, 302)
         response = c.post('/ATC/airport/new', {'name': 'sc', 'x': '100', 'y': '100'})
         self.assertGreater(response.status_code, 302)
 
         Airport.objects.filter(name="sc").delete()
 
+    def testbreakdown(self):
+        global office, user
+        office.delete()
+        user.delete()
 

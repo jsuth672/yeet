@@ -9,8 +9,8 @@ class TestAirline(TestCase):
         # create airline
         airline = Airline.objects.create(name="BJUAir")
         # two users, one ATC, one not
-        atc = User.objects.create(name="atc", role=Role(isATC=True))
-        not_atc = User.objects.create(name="not atc", role=Role(isATC=False))
+        atc = User.objects.create(name="atc", role=Role(name="ATC",isATC=True))
+        not_atc = User.objects.create(name="not atc", role=Role(name="GateAgent",isATC=False))
         # atc user should be able to access the airline
         response = c.post("ATC/airline/get", {'name': airline.name, 'user': atc.id})
         self.assertEqual(response.status_code, 200)

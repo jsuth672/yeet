@@ -10,10 +10,10 @@ class TestRunway(TestCase):
         response = c.get('/ATC/new')
         self.assertEqual(response.status_code, 200)
         air = Airport(name='sc', x=0, y=0)
-        response = c.post('/ATC/runway/new', {'identifier': 'runway1', 'size': 's', 'airport': air.id})
+        response = c.post('/ATC/runway/new', {'identifier': 'runway1', 'size': 's', 'airport': str(air.id)})
         self.assertEqual(response.status_code, 302)
 
-        response = c.post('/ATC/runway/new', {'identifier': 'runway1', 'size': 's', 'airport': air.id})
+        response = c.post('/ATC/runway/new', {'identifier': 'runway1', 'size': 's', 'airport': str(air.id)})
         self.assertGreater(response.status_code, 399)
 
         Runway.objects.filter(identifier="runway1").delete()
@@ -22,10 +22,10 @@ class TestRunway(TestCase):
     def test_runwayDelete(self):
         c = Client()
         air = Airport(name='sc', x=0, y=0)
-        response = c.post('/ATC/runway/new', {'identifier': 'runway1', 'size': 's', 'airport': air.id})
+        response = c.post('/ATC/runway/new', {'identifier': 'runway1', 'size': 's', 'airport': str(air.id)})
         self.assertEqual(response.status_code, 302)
 
-        response = c.post('/ATC/runway/delete', {'identifier': 'runway1', 'id': air.id})
+        response = c.post('/ATC/runway/delete', {'identifier': 'runway1', 'id': str(air.id)})
         self.assertEqual(response.status_code, 302)
 
         response = c.post('/ATC/runway/new', {'identifier': 'sc', 'x': '100', 'y': '100'})
@@ -34,3 +34,7 @@ class TestRunway(TestCase):
         Runway.objects.filter(identifier="RunwayAgent").delete()
         Airport.objects.filter(identifier="sc").delete()
 
+    def testbreakdown(self):
+        global office, user
+        office.delete()
+        user.delete()

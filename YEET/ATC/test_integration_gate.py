@@ -6,14 +6,13 @@ class TestGate(TestCase):
 
     def test_gatecreate(self):
         c = Client()  # instantiate the Django test client
-
         response = c.get('/ATC/new')
         self.assertEqual(response.status_code, 200)
         air = Airport(name='sc', x=0, y=0)
-        response = c.post('/ATC/gate/new', {'identifier': 'gate1', 'size': 's', 'airport': air.id})
+        response = c.post('/ATC/gate/new', {'identifier': 'gate1', 'size': 's', 'airport': str(air.id)})
         self.assertEqual(response.status_code, 302)
 
-        response = c.post('/ATC/gate/new', {'identifier': 'gate1', 'size': 's', 'airport': air.id})
+        response = c.post('/ATC/gate/new', {'identifier': 'gate1', 'size': 's', 'airport': str(air.id)})
         self.assertGreater(response.status_code, 399)
 
         Gate.objects.filter(identifier="gate1").delete()
@@ -22,10 +21,10 @@ class TestGate(TestCase):
     def test_gateDelete(self):
         c = Client()
         air = Airport(name='sc', x=0, y=0)
-        response = c.post('/ATC/gate/new', {'identifier': 'gate1', 'size': 's', 'airport': air.id})
+        response = c.post('/ATC/gate/new', {'identifier': 'gate1', 'size': 's', 'airport': str(air.id)})
         self.assertEqual(response.status_code, 302)
 
-        response = c.post('/ATC/gate/delete', {'identifier': 'gate1', 'id': air.id})
+        response = c.post('/ATC/gate/delete', {'identifier': 'gate1', 'id': str(air.id)})
         self.assertEqual(response.status_code, 302)
 
         response = c.post('/ATC/gate/new', {'identifier': 'sc', 'x': '100', 'y': '100'})
@@ -35,3 +34,7 @@ class TestGate(TestCase):
         Airport.objects.filter(identifier="sc").delete()
 
 
+    def testbreakdown(self):
+        global office, user
+        office.delete()
+        user.delete()
