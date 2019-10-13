@@ -27,13 +27,13 @@ class Airport(models.Model):
     y = models.IntegerField(default=0)
 
     def getRunways(self):
-        return Runway.objects.get(airport=self)
+        return Runway.objects.filter(airport=self)
 
     def getGate(self):
-        return Gate.objects.get(airport=self)
+        return Gate.objects.filter(airport=self)
 
     def getAirlines(self):
-     return Airline.objects.get(airport=self)
+        return Airline.objects.filter(airport=self)
 
 
 class Airline(models.Model):
@@ -41,9 +41,9 @@ class Airline(models.Model):
     airport = models.ManyToManyField("Airport")
 
     def getPlanes(self):
-        return Plane.objects.filter(airline=self.id)
+        return Plane.objects.filter(airline=self)
 
-
+      
 class Plane(models.Model):
     identifier = models.CharField(max_length=100)
     size = models.CharField(max_length=10)
