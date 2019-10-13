@@ -34,3 +34,4 @@ class TestGate(TestCase):
         Gate.objects.filter(identifier="GateAgent").delete()
         Airport.objects.filter(identifier="sc").delete()
 
+
