@@ -1,28 +1,19 @@
 from django.test import TestCase
-from ATC.models import User
+from ATC.models import User, Role
+
 
 class TestUserHasATCPerm(TestCase):
-    def test_set_up(self):
-        # create test objects here
-        pass
 
+    # written by Ryan Longacre
     def test_assert(self):
-        # assert statements here
-        pass
+        user_with_perm = User(name="Joe", password="secure password", role=Role(isATC=True))
+        self.assertEqual(user_with_perm.hasATCPerm(), True)
+        user_without_perm = User(name="Not Joe", password="more secure password", role=Role(isATC=False))
+        self.assertEqual(user_without_perm.hasATCPerm(), False)
 
-    def test_tear_down(self):
-        # delete test objects here
-        pass
 
 class TestUserHasGatePerm(TestCase):
-    def test_set_up(self):
-        # create test objects here
-        pass
 
     def test_assert(self):
         # assert statements here
-        pass
-
-    def test_tear_down(self):
-        # delete test objects here
         pass
