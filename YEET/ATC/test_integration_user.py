@@ -1,7 +1,7 @@
 from django.test import Client, TestCase
 from ATC.models import User, Role
 
-
+# Noah Mansfield
 class test_User(TestCase):
     global office, user
     office = Role.objects.create(name="ATC", isATC=True)
@@ -32,10 +32,10 @@ class test_User(TestCase):
         self.assertEqual(response.status_code, 302)
         role = Role.objects.get(name="ATC")
 
-        user = User.objects.get(name="Noah Mansfield")
-        response = c.post('/ATC/user/update', {'id': str(user.id), 'role': str(role.id), 'user': str(user.id)})
+        user2 = User.objects.get(name="Noah Mansfield")
+        response = c.post('/ATC/user/update', {'id': str(user2.id), 'role': str(role.id), 'user': str(user.id)})
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(User.objects.get(id=user.id).hasATCPerm(), True)
+        self.assertEqual(User.objects.get(id=user2.id).hasATCPerm(), True)
 
         User.objects.filter(name="Noah Mansfield").delete()
         Role.objects.filter(id=role.id).delete()

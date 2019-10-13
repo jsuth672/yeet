@@ -1,7 +1,7 @@
 from django.test import TestCase
 from ATC.models import Plane, Airline, Gate, Runway, Airport
 
-# written by Justin
+# written by Justin Sutherland edited by Noah Mansfield
 
 class TestPlaneGetAirline(TestCase):
     def test_assert(self):
