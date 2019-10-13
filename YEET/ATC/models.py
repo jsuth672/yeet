@@ -43,7 +43,7 @@ class Airline(models.Model):
     def getPlanes(self):
         return Plane.objects.filter(airline=self)
 
-
+      
 class Plane(models.Model):
     identifier = models.CharField(max_length=100)
     size = models.CharField(max_length=10)
