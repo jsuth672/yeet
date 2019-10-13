@@ -14,6 +14,9 @@ class TestUserHasATCPerm(TestCase):
 
 class TestUserHasGatePerm(TestCase):
 
+    # written by Ryan Longacre
     def test_assert(self):
-        # assert statements here
-        pass
+        user_with_perm = User(name="Joe", password="secure password", role=Role(isGate=True))
+        self.assertEqual(user_with_perm.hasGatePerm(), True)
+        user_without_perm = User(name="Not Joe", password="more secure password", role=Role(isGate=False))
+        self.assertEqual(user_without_perm.hasGatePerm(), False)
