@@ -19,7 +19,7 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   -Dsonar.organization=bjucps \
   -Dsonar.sources=. \
   -Dsonar.host.url=https://sonarcloud.io \
-  -Dsonar.login=jsuth672 \
+  -Dsonar.login=102ee2804abfe6395cf93c0adc2e60b84785e9fc \
   -Dsonar.python.coverage.reportPaths=nosecover.xml \
   -Dsonar.python.xunit.reportPaths=nosetests.xml
 else
@@ -29,7 +29,7 @@ else
   -Dsonar.organization=bjucps \
   -Dsonar.sources=. \
   -Dsonar.host.url=https://sonarcloud.io \
-  -Dsonar.login=jsuth672 \
+  -Dsonar.login=102ee2804abfe6395cf93c0adc2e60b84785e9fc \
   -Dsonar.pullrequest.key=$TRAVIS_PULL_REQUEST \
   -Dsonar.pullrequest.branch=$TRAVIS_PULL_REQUEST_BRANCH \
   -Dsonar.pullrequest.base=master \
