@@ -41,6 +41,17 @@ INSTALLED_APPS = [
     'django_nose',
 ]
 
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = [
+    '--with-xunit',
+    '--xunit-file=nosetests.xml',
+    '--with-coverage',
+    '--cover-erase',
+    '--cover-xml',
+    '--cover-xml-file=nosecover.xml',
+    '--cover-package=todo'
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
