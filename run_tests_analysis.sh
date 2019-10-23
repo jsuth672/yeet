@@ -19,7 +19,7 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   -Dsonar.organization=bjucps \
   -Dsonar.sources=. \
   -Dsonar.host.url=https://sonarcloud.io \
-  -Dsonar.login=yeet \
+  -Dsonar.login=jsuth672 \
   -Dsonar.python.coverage.reportPaths=nosecover.xml \
   -Dsonar.python.xunit.reportPaths=nosetests.xml
 else
