@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ATC.apps.AtcConfig',
+    'django_nose',
 ]
 
 MIDDLEWARE = [
