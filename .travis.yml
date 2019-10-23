@@ -21,5 +21,4 @@ before_script:
   - psql -c 'create database ATC;' -U postgres
   - mv YEET/settings.py.travis YEET/settings.py
 script: 
-  - python manage.py test
-  - chmod +x run_sonar.sh && ./run_sonar.sh
+  - chmod +x run_tests_analysis.sh && ./run_tests_analysis.sh
