@@ -16,7 +16,7 @@ export SONAR_SCANNER_OPTS="-server"
 if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   sonar-scanner \
   -Dsonar.projectKey=yeet \
-  -Dsonar.organization=bjucps \
+  -Dsonar.organization=jsuth672 \
   -Dsonar.sources=. \
   -Dsonar.host.url=https://sonarcloud.io \
   -Dsonar.login=102ee2804abfe6395cf93c0adc2e60b84785e9fc \
@@ -26,7 +26,7 @@ else
   echo "checking pull request..."
   sonar-scanner \
   -Dsonar.projectKey=yeet \
-  -Dsonar.organization=bjucps \
+  -Dsonar.organization=jsuth672 \
   -Dsonar.sources=. \
   -Dsonar.host.url=https://sonarcloud.io \
   -Dsonar.login=102ee2804abfe6395cf93c0adc2e60b84785e9fc \
