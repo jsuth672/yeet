@@ -1,0 +1,9 @@
+[run]
+omit = 
+    <app folder name>/migrations/*
+
+[report]
+omit = 
+    <app folder name>/__init__.py
+    <app folder name>/admin.py
+    <app folder name>/migrations/*
